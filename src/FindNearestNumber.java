@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class findNearestNumber {
+public class FindNearestNumber {
     public static void main(String[] args) {
         int[] inputNumber = inputNumber();
         int[] nextNumber = new int[0];

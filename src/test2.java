@@ -1,39 +1,32 @@
-import java.util.Stack;
+import java.util.Arrays;
 
 public class test2 {
-    private Stack<Integer> mainStack = new Stack<>();
-    private Stack<Integer> minStack = new Stack<>();
-
-    public void push(int element) {
-        mainStack.push(element);
-        if (minStack.empty() || minStack.peek() > element) {
-            minStack.push(element);
-        }
+    public static void main(String[] args) {
+        int[] array = new int[] {1,2,5,4,7,4,4,2,8,10};
+        int[] array2 = new int[] {96,91,91,90,91,95};
+        System.out.println(Arrays.toString(countSort(array)));
+        System.out.println(Arrays.toString(countSort(array2)));
     }
 
-    public int pop() {
-        if (minStack.peek().equals(mainStack.peek())) {
-            return minStack.pop();
-        }
-        return mainStack.pop();
-    }
 
-    public int getMin() throws Exception {
-        if (minStack.empty()) {
-            throw new Exception("stack is empty");
+    private static int[] countSort(int[] array) {
+        int max = array[0], min = array[0];
+        for (int num : array) {
+            max = Math.max(max,num);
+            min = Math.min(min,num);
         }
-        return minStack.pop();
-    }
-
-    public static void main(String[] args) throws Exception {
-        test2 stack = new test2();
-        stack.push(3);
-        stack.push(5);
-        stack.push(2);
-        stack.push(7);
-        System.out.println(stack.getMin());
-        stack.pop();
-        stack.pop();
-        System.out.println(stack.getMin());
+        int len = max - min;
+        int[] countArray = new int[len + 1];
+        for (int num : array) {
+            countArray[num - min]++;
+        }
+        for (int i = 1; i < countArray.length; i++) {
+            countArray[i] += countArray[i-1];
+        }
+        int[] sortedArray = new int[array.length];
+        for (int i = array.length-1; i >= 0; i--) {
+            sortedArray[--countArray[array[i] - min]] = array[i];
+        }
+        return sortedArray;
     }
 }

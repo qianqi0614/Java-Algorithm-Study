@@ -57,23 +57,28 @@ public class getGreatestCommonDivisor {
     }
 
     public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
+        long startTime = 0;
+        long endTime = 0;
+        startTime = System.nanoTime();
         System.out.println(getGreatestCommonDivisor(25,5));
         System.out.println(getGreatestCommonDivisor(100,80));
         System.out.println(getGreatestCommonDivisor(1000,1001));
-        System.out.println(System.currentTimeMillis());
+        endTime = System.nanoTime();
+        System.out.println("程序运行了" + (endTime - startTime) +"纳秒");
         System.out.println("------------------");
-        System.out.println(System.currentTimeMillis());
+        startTime = System.nanoTime();
         System.out.println(getGreatestCommonDivisorV2(25, 5));
         System.out.println(getGreatestCommonDivisorV2(100, 80));
         System.out.println(getGreatestCommonDivisorV2(1000,1001));
-        System.out.println(System.currentTimeMillis());
+        endTime = System.nanoTime();
+        System.out.println("程序运行了" + (endTime - startTime) +"纳秒");
+
         System.out.println("------------------");
-        System.out.println(System.currentTimeMillis());
+        startTime = System.nanoTime();
         System.out.println(getGreatestCommonDivisorV3(25, 5));
         System.out.println(getGreatestCommonDivisorV3(100, 80));
         System.out.println(getGreatestCommonDivisorV3(1000,1001));
-        System.out.println(System.currentTimeMillis());
-
+        endTime = System.nanoTime();
+        System.out.println("程序运行了" + (endTime - startTime) +"纳秒");
     }
 }

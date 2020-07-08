@@ -1,4 +1,4 @@
-public class getGreatestCommonDivisor {
+public class GetGreatestCommonDivisor {
     /**
      * 辗转相除法（欧几里得算法）：
      * 两个正整数 a 和 b（a > b）,它们的最大公约数等于 a 除以 b 的余数 c 和 b 之间的最大公约数

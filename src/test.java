@@ -1,39 +1,22 @@
 public class test {
     public static void main(String[] args) {
-        System.out.println(reserve(-134521));
-        System.out.println(isPalindrome(-121));
+        System.out.println(isPalindrome("A man, a plan, a canal: Panama"));
     }
 
-    public static boolean isPalindrome(int x) {
-        int temp = x;
-        int res = 0;
-        while (x != 0) {
-            int pop = x % 10;
-            x = x / 10;
-//            if (res > Integer.MAX_VALUE/10 || (res == Integer.MAX_VALUE/10 && pop > Integer.MAX_VALUE%10)) {
-//                return 0;
-//            }
-//            if (res < Integer.MIN_VALUE/10 || (res == Integer.MIN_VALUE/10 && pop < Integer.MIN_VALUE%10)) {
-//                return 0;
-//            }
-            res = res * 10 + pop;
-        }
-        System.out.println(temp);
-        return temp == res;
-    }
-    public static int reserve(int x) {
-        int res = 0;
-        while (x != 0) {
-            int pop = x % 10;
-            x = x / 10;
-            if (res > Integer.MAX_VALUE/10 || (res == Integer.MAX_VALUE/10 && pop > Integer.MAX_VALUE%10)) {
-                return 0;
+    public static boolean isPalindrome(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (Character.isLetterOrDigit(ch)) {
+                sb.append(Character.toLowerCase(ch));
             }
-            if (res < Integer.MIN_VALUE/10 || (res == Integer.MIN_VALUE/10 && pop < Integer.MIN_VALUE%10)) {
-                return 0;
-            }
-            res = res * 10 + pop;
         }
-        return res;
+        System.out.println(sb.toString());
+        for (int i = 0, j = sb.length() - 1; i < j; i++, j--) {
+            if (sb.charAt(i) != sb.charAt(j)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

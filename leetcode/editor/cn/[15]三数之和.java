@@ -22,26 +22,35 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> list = null;
-        Map<Integer,Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int sum = 0 - nums[i];
-            int[] newNums = new int[nums.length - i - 1];
-            System.arraycopy(nums,i+1,newNums,0,newNums.length);
-            list = twoSum(newNums, sum);
-        }
-        return list;
-    }
-    public List<List<Integer>> twoSum(int[] nums, int sum) {
         List<List<Integer>> lists = new LinkedList<>();
-        List<Integer> list = null;
-        for (int i = 0; i < nums.length; i++) {
-            int temp = sum - nums[i];
-            for (int j = i + 1; j < nums.length; j++) {
-                if (temp == nums[j]) {
-                    list = new LinkedList<>();
-                    list.add(nums[i]);
-                    list.add(nums[j]);
+        if (nums == null || nums.length <= 2) {
+            return lists;
+        }
+        Arrays.sort(nums);
+        for (int first = 0; first < nums.length; first++) {
+            if (first > 0 && nums[first] == nums[first - 1]) {
+                continue;
+            }
+            int third = nums.length - 1;
+            int target = -nums[first];
+            for (int second = first + 1; second < nums.length; second++) {
+                if (second > first + 1 && nums[second] == nums[second - 1]) {
+                    continue;
+                }
+                // 需要保证 b 的指针在 c 的指针的左侧
+                while (second < third && nums[second] + nums[third] > target) {
+                    --third;
+                }
+                // 如果指针重合，随着 b 后续的增加
+                // 就不会有满足 a+b+c=0 并且 b<c 的 c 了，可以退出循环
+                if (second == third) {
+                    break;
+                }
+                if (nums[second] + nums[third] == target) {
+                    List<Integer> list = new LinkedList<>();
+                    list.add(nums[first]);
+                    list.add(nums[second]);
+                    list.add(nums[third]);
                     lists.add(list);
                 }
             }

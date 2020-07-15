@@ -13,9 +13,12 @@ public class test {
 //
 //        int[] nums = {1,1,1,1};
 //        System.out.println(threeSumClosest(nums,4));
-        String s = "{}[]";
-        test t = new test();
-        System.out.println(t.isValid(s));
+//        String s = "{}[]";
+//        test t = new test();
+//        System.out.println(t.isValid(s));
+        String S = "xywrrmp";
+        String T = "xywrrmu#p";
+        System.out.println(backspaceCompare(S,T));
     }
 
     public static int maxArea(int[] height) {
@@ -276,5 +279,43 @@ public class test {
             }
         }
         return stack.isEmpty();
+    }
+
+    public static boolean backspaceCompare(String S, String T) {
+        int i = S.length() - 1, j = T.length() - 1;
+        int skipS = 0, skipT = 0;
+
+        while (i >= 0 || j >= 0) {
+            while (i >= 0) {
+                if (S.charAt(i) == '#') {
+                    skipS++;
+                    i--;
+                } else if (skipS > 0) {
+                    skipS--;
+                    i--;
+                } else {
+                    break;
+                }
+            }
+            while (j >= 0) {
+                if (T.charAt(j) == '#') {
+                    skipT++;
+                    j--;
+                } else if (skipT > 0) {
+                    skipT--;
+                    j--;
+                } else {
+                    break;
+                }
+            }
+            if (i >= 0 && j >=0 && S.charAt(i) != T.charAt(j)) {
+                return false;
+            }
+            if ((i >= 0) != (j >= 0)) {
+                return false;
+            }
+            i--;j--;
+        }
+        return true;
     }
 }

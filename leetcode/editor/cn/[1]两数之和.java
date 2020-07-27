@@ -16,19 +16,53 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
+    /**
+     * 法一：循环，时间复杂度 o(n), 空间复杂度 o(1)
+     */
+//    public int[] twoSum(int[] nums, int target) {
+//        for (int i = 0; i < nums.length; i++) {
+//            int temp = target - nums[i];
+//            for (int j = i + 1; j < nums.length; j++) {
+//                if (nums[j] == temp) {
+//                    return new int[] {i, j};
+//                }
+//            }
+//        }
+//        throw new IllegalArgumentException("No two sum solution!");
+//    }
+
+    /**
+     * 法二：利用 HashMap，时间复杂度 o(1), 空间复杂度 o(n)
+     */
+//    public int[] twoSum(int[] nums, int target) {
+//        Map<Integer,Integer> map  = new HashMap<>();
+//        int len = nums.length;
+//        for (int i = 0; i < len; i++) {
+//            map.put(nums[i],i);
+//        }
+//        for (int i = 0; i < len; i++) {
+//            int res = target - nums[i];
+//            if (map.containsKey(res) && map.get(res) != i) {
+//                return new int[] {i, map.get(res)};
+//            }
+//        }
+//        throw new IllegalArgumentException("No two sum solution!");
+//    }
+
+    /**
+     * 法三：对于 HashMap 的优化，只循环一次
+     */
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> map  = new HashMap<>();
-        int len = nums.length;
-        for (int i = 0; i < len; i++) {
-            map.put(nums[i],i);
-        }
-        for (int i = 0; i < len; i++) {
-            int res = target - nums[i];
-            if (map.containsKey(res) && map.get(res) != i) {
-                return new int[] {i, map.get(res)};
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int temp = target - nums[i];
+            if (map.containsKey(temp)) {
+                return new int[] {i, map.get(temp)};
             }
+            map.put(nums[i], i);
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("No two sum solution!");
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

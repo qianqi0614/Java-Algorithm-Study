@@ -24,59 +24,70 @@ public class test {
 //        String S = "xywrrmp";
 //        String T = "xywrrmu#p";
 //        System.out.println(backspaceCompare(S,T));
-        ListNode l1 = new ListNode(1);
-        ListNode l2 = new ListNode(2);
-        ListNode l3 = new ListNode(3);
-        ListNode l4 = new ListNode(4);
-        ListNode l5 = new ListNode(5);
-        l1.next = l2;
-        l2.next = l3;
-        l3.next = l4;
-        l4.next = l5;
-        ListNode res = reserveBetween(l1, 2, 4);
-        while (res != null) {
-            System.out.print(res.val + "->");
-            res = res.next;
-        }
-        System.out.print("null");
+//        ListNode l1 = new ListNode(1);
+//        ListNode l2 = new ListNode(2);
+//        ListNode l3 = new ListNode(3);
+//        ListNode l4 = new ListNode(4);
+//        ListNode l5 = new ListNode(5);
+//        l1.next = l2;
+//        l2.next = l3;
+//        l3.next = l4;
+//        l4.next = l5;
+//        ListNode res = reserveBetween(l1, 2, 4);
+//        while (res != null) {
+//            System.out.print(res.val + "->");
+//            res = res.next;
+//        }
+//        System.out.print("null");
 
+        System.out.println(lengthOfLongestSubstring("abcdcca"));
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int ans = 0, n = s.length();
+        int[] index = new int[128];
+        for (int j = 0, i = 0; j < n; j++) {
+            i = Math.max(i, index[s.charAt(j)]);
+            ans = Math.max(ans, j - i + 1);
+            index[s.charAt(j)] = j + 1;
+        }
+        return ans;
     }
 
 
-
-    public static ListNode reserveBetween(ListNode head, int m, int n) {
-        if (head == null) {
-            return null;
-        }
-
-        ListNode curr = head, prev = null;
-        while (m > 1) {
-            prev = curr;
-            curr = curr.next;
-            m--;
-            n--;
-        }
-
-        ListNode con = prev, tail = curr;
-
-        ListNode third = null;
-        while (n > 0) {
-            third = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = third;
-            n--;
-        }
-
-        if (con != null) {
-            con.next = prev;
-        } else {
-            head = prev;
-        }
-
-        tail.next = curr;
-        return head;
-    }
+//    public static ListNode reserveBetween(ListNode head, int m, int n) {
+//        if (head == null) {
+//            return null;
+//        }
+//
+//        ListNode curr = head, prev = null;
+//        while (m > 1) {
+//            prev = curr;
+//            curr = curr.next;
+//            m--;
+//            n--;
+//        }
+//
+//        ListNode con = prev, tail = curr;
+//
+//        ListNode third = null;
+//        while (n > 0) {
+//            third = curr.next;
+//            curr.next = prev;
+//            prev = curr;
+//            curr = third;
+//            n--;
+//        }
+//
+//        if (con != null) {
+//            con.next = prev;
+//        } else {
+//            head = prev;
+//        }
+//
+//        tail.next = curr;
+//        return head;
+//    }
 
 //    public static int maxArea(int[] height) {
 //        int l = height.length;

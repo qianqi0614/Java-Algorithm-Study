@@ -12,14 +12,14 @@
 // 示例: 
 //
 // 输入：
-//["MinStack","push","push","push","getMin","pop","top","getMin"]
+//["Stack.MinStack","push","push","push","getMin","pop","top","getMin"]
 //[[],[-2],[0],[-3],[],[],[],[]]
 //
 //输出：
 //[null,null,null,null,-3,null,0,-2]
 //
 //解释：
-//MinStack minStack = new MinStack();
+//Stack.MinStack minStack = new Stack.MinStack();
 //minStack.push(-2);
 //minStack.push(0);
 //minStack.push(-3);
@@ -75,8 +75,8 @@ class MinStack {
 }
 
 /**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
+ * Your Stack.MinStack object will be instantiated and called as such:
+ * Stack.MinStack obj = new Stack.MinStack();
  * obj.push(x);
  * obj.pop();
  * int param_3 = obj.top();

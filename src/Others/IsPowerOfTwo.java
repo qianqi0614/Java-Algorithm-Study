@@ -1,3 +1,5 @@
+package Others;
+
 public class IsPowerOfTwo {
     public static boolean isPowerOfTwo(int number) {
         return (number - 1 & number) == 0;

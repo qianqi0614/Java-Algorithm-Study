@@ -1,3 +1,5 @@
+package Recursion;
+
 public class GetGreatestCommonDivisor {
     /**
      * 辗转相除法（欧几里得算法）：

@@ -5,6 +5,23 @@ import java.util.Arrays;
 public class BubbleSort {
 
     public static void sort(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            boolean isSorted = true;
+            for (int j = 0; j < array.length - 1; j++) {
+                if (array[j] > array[j+1]) {
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                    isSorted = false;
+                }
+            }
+            if (isSorted) {
+                break;
+            }
+        }
+    }
+
+    public static void sort1(int[] array) {
         int lastExchangeIndex = 0;
         int sortBorder = array.length - 1;
         int temp = 0;
@@ -68,8 +85,9 @@ public class BubbleSort {
 
     public static void main(String[] args) {
         int[] array = new int[] {1,2,3,9,8,7,6,5,4,10,11,12,13,14};
-//        sort(array);
-        sort2(array);
+        sort(array);
+//        sort1(array);
+//        sort2(array);
         System.out.println(Arrays.toString(array));
     }
 }

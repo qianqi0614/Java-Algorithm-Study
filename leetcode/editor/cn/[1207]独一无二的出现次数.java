@@ -41,11 +41,7 @@ class Solution {
         for (int i : arr) {
             map.put(i, map.getOrDefault(i, 0) + 1);
         }
-        Set<Integer> times = new HashSet<>();
-        for (Map.Entry<Integer,Integer> x : map.entrySet()) {
-            times.add(x.getValue());
-        }
-        return times.size() == map.size();
+        return map.size() == new HashSet<>(map.values()).size();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

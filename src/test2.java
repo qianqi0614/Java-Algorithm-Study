@@ -2,12 +2,17 @@ import java.util.*;
 
 public class test2 {
     public static void main(String[] args) {
-        int[] array = new int[] {1,2,5,4,7,4,4,2,8,10};
-        int[] array2 = new int[] {96,91,91,90,91,95};
-        System.out.println(Arrays.toString(countSort(array)));
-        System.out.println(Arrays.toString(countSort(array2)));
-        double[] array3 = new double[] {4.12,6.421,0.0023,2.123,8.122,4.12,10.09};
-        System.out.println(Arrays.toString(bucketSort(array3)));
+//        int[] array = new int[] {1,2,5,4,7,4,4,2,8,10};
+//        int[] array2 = new int[] {96,91,91,90,91,95};
+//        System.out.println(Arrays.toString(countSort(array)));
+//        System.out.println(Arrays.toString(countSort(array2)));
+//        double[] array3 = new double[] {4.12,6.421,0.0023,2.123,8.122,4.12,10.09};
+//        System.out.println(Arrays.toString(bucketSort(array3)));
+        List<List<Integer>> triangle = generate(10);
+        for (List<Integer> list : triangle) {
+            list.forEach(integer -> System.out.print(integer+ " "));
+            System.out.println();
+        }
     }
 
 
@@ -62,5 +67,27 @@ public class test2 {
             }
         }
         return sortedArray;
+    }
+
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> triangel = new ArrayList<>();
+        if (numRows <= 0) {
+            return triangel;
+        }
+
+        triangel.add(new ArrayList<>());
+        triangel.get(0).add(1);
+
+        for (int rowNums = 1; rowNums < numRows; rowNums++) {
+            List<Integer> row = new ArrayList<>();
+            List<Integer> prevRow = triangel.get(rowNums-1);
+            row.add(1);
+            for (int j = 1; j < rowNums; j++) {
+                row.add(prevRow.get(j-1) + prevRow.get(j));
+            }
+            row.add(1);
+            triangel.add(row);
+        }
+        return triangel;
     }
 }

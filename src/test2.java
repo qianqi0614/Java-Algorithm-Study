@@ -8,11 +8,12 @@ public class test2 {
 //        System.out.println(Arrays.toString(countSort(array2)));
 //        double[] array3 = new double[] {4.12,6.421,0.0023,2.123,8.122,4.12,10.09};
 //        System.out.println(Arrays.toString(bucketSort(array3)));
-        List<List<Integer>> triangle = generate(10);
-        for (List<Integer> list : triangle) {
-            list.forEach(integer -> System.out.print(integer+ " "));
-            System.out.println();
-        }
+//        List<List<Integer>> triangle = generate(10);
+//        for (List<Integer> list : triangle) {
+//            list.forEach(integer -> System.out.print(integer+ " "));
+//            System.out.println();
+//        }
+        getRow(3);
     }
 
 
@@ -89,5 +90,18 @@ public class test2 {
             triangel.add(row);
         }
         return triangel;
+    }
+
+    public static List<Integer> getRow(int rowIndex) {
+        List<Integer> row = new ArrayList<>(rowIndex+1);
+        for (int i = 0; i < rowIndex + 1; i++) {
+            if (i == 0) {
+                row.add(1);
+            } else {
+                long val = (long) row.get(i - 1) * (long) (rowIndex + 1 - i) / i;
+                row.add((int) val);
+            }
+        }
+        return row;
     }
 }

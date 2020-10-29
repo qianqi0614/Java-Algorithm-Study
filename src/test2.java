@@ -1,3 +1,6 @@
+import sun.font.CreatedFontTracker;
+
+import javax.swing.plaf.ListUI;
 import java.util.*;
 
 public class test2 {
@@ -13,7 +16,8 @@ public class test2 {
 //            list.forEach(integer -> System.out.print(integer+ " "));
 //            System.out.println();
 //        }
-        getRow(3);
+//        getRow(3);
+        System.out.println(isUnique("leetcode"));
     }
 
 
@@ -103,5 +107,20 @@ public class test2 {
             }
         }
         return row;
+    }
+
+    public static boolean isUnique(String astr) {
+        HashMap<Character,Integer> map = new HashMap<>();
+        for (int i = 0; i < astr.length(); i++) {
+            char ch = astr.charAt(i);
+            map.put(ch,map.getOrDefault(ch,0)+1);
+        }
+        System.out.println(map.values());
+        for (int i : map.values()) {
+            if (i > 1) {
+                return false;
+            }
+        }
+        return false;
     }
 }

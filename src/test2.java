@@ -17,7 +17,9 @@ public class test2 {
 //            System.out.println();
 //        }
 //        getRow(3);
-        System.out.println(isUnique("leetcode"));
+//        System.out.println(isUnique("leetcode"));
+        int[][] tmp = {{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
+        System.out.println(islandPerimeter(tmp));
     }
 
 
@@ -122,5 +124,28 @@ public class test2 {
             }
         }
         return false;
+    }
+
+    static int[] dx = {0, 1, 0, -1};
+    static int[] dy = {1, 0, -1, 0};
+    public static int islandPerimeter(int[][] grid) {
+        int n = grid.length, m = grid[0].length;
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 1) {
+                    int cnt = 0;
+                    for (int k = 0; k < 4; k++) {
+                        int tx = i + dx[k];
+                        int ty = j + dy[k];
+                        if (tx < 0 || tx >= n || ty < 0 || ty >= m || grid[tx][ty] == 0) {
+                            cnt += 1;
+                        }
+                    }
+                    ans += cnt;
+                }
+            }
+        }
+        return ans;
     }
 }

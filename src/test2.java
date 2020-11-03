@@ -26,6 +26,8 @@ public class test2 {
 //        int[] nums = {3,2,1};
 //        nextPermutation(nums);
 //        System.out.println(Arrays.toString(nums));
+        int[] nums = {0,3,2,1};
+        System.out.println(validMountainArray(nums));
     }
 
 
@@ -210,5 +212,23 @@ public class test2 {
             nums[i++] = nums[j];
             nums[j--] = temp;
         }
+    }
+
+    public static boolean validMountainArray(int[] A) {
+        if (A.length < 3) {
+            return false;
+        }
+        int N = A.length;
+        int i = 0;
+        while (A[i] < A[i+1] && i+1 < N) {
+            i++;
+        }
+        if (i == 0 || i == N-1) {
+            return false;
+        }
+        while (i+1 < N && A[i] > A[i+1]) {
+            i++;
+        }
+        return i == N-1;
     }
 }

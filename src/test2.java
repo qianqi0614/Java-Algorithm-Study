@@ -18,8 +18,14 @@ public class test2 {
 //        }
 //        getRow(3);
 //        System.out.println(isUnique("leetcode"));
-        int[][] tmp = {{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
-        System.out.println(islandPerimeter(tmp));
+//        int[][] tmp = {{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
+//        System.out.println(islandPerimeter(tmp));
+//        int[] nums1 = {1, 2, 2, 1};
+//        int[] nums2 = {2, 2};
+//        System.out.println(Arrays.toString(intersection(nums1,nums2)));
+//        int[] nums = {3,2,1};
+//        nextPermutation(nums);
+//        System.out.println(Arrays.toString(nums));
     }
 
 
@@ -147,5 +153,62 @@ public class test2 {
             }
         }
         return ans;
+    }
+
+    public static int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for (int n : nums1) {
+            set1.add(n);
+        }
+        for (int n : nums2) {
+            set2.add(n);
+        }
+        return getIntersection(set1, set2);
+
+    }
+
+    public static int[] getIntersection(Set<Integer> set1, Set<Integer> set2) {
+        if (set1.size() < set2.size()) {
+            return getIntersection(set2,set1);
+        }
+        Set<Integer> intersection = new HashSet<>();
+        for (int i : set1) {
+            if (set2.contains(i)) {
+                intersection.add(i);
+            }
+        }
+        int[] res = new int[intersection.size()];
+        int j = 0;
+        for (int i : intersection) {
+            res[j++] = i;
+        }
+        return res;
+    }
+
+    public static void nextPermutation(int[] nums) {
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i+1] <= nums[i]) {
+            i--;
+        }
+        if (i >= 0) {
+            int j = nums.length - 1;
+            while (j >= 0 && nums[j] <= nums[i]) {
+                j--;
+            }
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+        reverse(nums, i+1);
+    }
+
+    public static void reverse(int[] nums, int start) {
+        int i = start, j = nums.length-1;
+        while (i < j) {
+            int temp = nums[i];
+            nums[i++] = nums[j];
+            nums[j--] = temp;
+        }
     }
 }

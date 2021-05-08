@@ -33,4 +33,8 @@ public class demo {
         Arrays.sort(obj);
         return obj[obj.length-1];
     }
+
+    public static void test() {
+        System.out.println("hello world!");
+    }
 }

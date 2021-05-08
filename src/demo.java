@@ -34,7 +34,7 @@ public class demo {
         return obj[obj.length-1];
     }
 
-    public static void test() {
+    public static void test2() {
         System.out.println("hello world!");
     }
 }
